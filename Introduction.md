@@ -15,18 +15,41 @@ Monitoring & Notifications → Sends reports via email, Slack, or other tools
 
 # Configuration -
 - Update System Packages
+ 
         sudo apt update
+  
 - Install Java (Jenkins requires Java)
-        sudo apt install openjdk-11-jdk -y
+
+          sudo apt install openjdk-11-jdk -y
+  
 - Add Jenkins Repository & Install Jenkins
-      wget -O - https://pkg.jenkins.io/debian-stable/jenkins.io.key | sudo tee \
-      /usr/share/keyrings/jenkins-keyring.asc > /dev/null
-      echo "deb [signed-by=/usr/share/keyrings/jenkins-keyring.asc] \
-      https://pkg.jenkins.io/debian-stable binary/" | sudo tee \
-      /etc/apt/sources.list.d/jenkins.list > /dev/null
-      sudo apt update
-      sudo apt install jenkins -y
+  
+              wget -O - https://pkg.jenkins.io/debian-stable/jenkins.io.key | sudo tee \
+              /usr/share/keyrings/jenkins-keyring.asc > /dev/null
+
+              echo "deb [signed-by=/usr/share/keyrings/jenkins-keyring.asc] \
+              https://pkg.jenkins.io/debian-stable binary/" | sudo tee \
+              /etc/apt/sources.list.d/jenkins.list > /dev/null
+  
+              sudo apt update
+              sudo apt install jenkins -y
+
 - Start and Enable Jenkins
-      sudo systemctl start jenkins
-      sudo systemctl enable jenkins
-- 
+  
+              sudo systemctl start jenkins
+              sudo systemctl enable jenkins
+
+- Add port 8080 to SG.
+- Open your EC2 Public IP in a browser:
+
+                http://your-ec2-public-ip:8080
+
+- Get the initial admin password:
+
+                sudo cat /var/lib/jenkins/secrets/initialAdminPassword
+
+
+
+
+
+
