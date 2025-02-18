@@ -6,11 +6,11 @@
 
 
 # How Jenkins Works -
-Developer pushes code → Code is committed to a repository like GitHub/GitLab.
-Jenkins detects changes → Polling or webhook triggers a new build.
-Build process starts → Jenkins compiles the code, runs tests, and generates artifacts.
-Deployment → Deploys to a test/staging/production environment.
-Monitoring & Notifications → Sends reports via email, Slack, or other tools
+- Developer pushes code → Code is committed to a repository like GitHub/GitLab.
+- Jenkins detects changes → Polling or webhook triggers a new build.
+- Build process starts → Jenkins compiles the code, runs tests, and generates artifacts.
+- Deployment → Deploys to a test/staging/production environment.
+- Monitoring & Notifications → Sends reports via email, Slack, or other tools
 
 
 # Configuration -
