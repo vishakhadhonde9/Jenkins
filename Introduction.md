@@ -20,7 +20,7 @@
   
 - Install Java (Jenkins requires Java)
 
-          sudo apt install openjdk-11-jdk -y
+          sudo apt install openjdk-21-jdk -y
   
 - Add Jenkins Repository & Install Jenkins
   
