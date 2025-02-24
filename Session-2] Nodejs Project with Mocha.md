@@ -1,5 +1,6 @@
 # 
-## Deploy Production Server -
+## Deploy Production Server - 
+- Add port 3000 to SG.
 - Install Nodejs and npm.
 
           apt-get install nodejs
@@ -7,6 +8,7 @@
 
 
 
+- Create pakage.json and index.js file as code given above:
   
 #### Package.json -
 
@@ -49,16 +51,42 @@
 
 
 # Jenkin Server -
-mkdir nodeapp
+- Create directory nodeapp
+- Install and setup Git.
+- Create two files package.json and index.js as above.
+
+# Connect to Jenkins- (8080)
+- Create new item.
+- Add Description.
+- Select Source Code Management as git and add git repo link.
+- Select trigger as "GitHub hook trigger for GITScm polling"
+- Save.
 
 
 
+### To add node env.-
+- Go to Dashboard.
+- Select Manage Jenkins.
+- Select Plugins.
+- Available Plugins.
+- Sesrch nodejs plugin and install with same version as deployment server.
+- Restart Jenkin.
+- Connect To jenkin again.
+### Go to your project and configure again-
+- Add env as provide node and npm
+- Add Build Step: execute shell -----> npm install.
 
 
+# On github -
+- Create webhook:
+        add payload as "http://ip_of_jenkinserver:8080/github-webhook/
 
 
+# On Jenkin Server -
+- Push files on github.
 
 
-
+# 2] Test -
+- 
 
 
