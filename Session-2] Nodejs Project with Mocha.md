@@ -112,3 +112,17 @@
                       });
                     });
 
+
+
+
+- Add file into workspace.
+
+# Connect To Jenkins(8080)
+- Add New item.
+- Add Description.
+- Select Source Code Management as git and add git repo link.
+- Select trigger as "Build after other Project".
+          - Add watch as "buildprojetname.
+          - Build if first is stable.
+-  Add env as provide node and npm
+- Add Build Step: execute shell -----> npm install.   ./node_modules/mocha/bin/_mocha --exit ./test/test.js
