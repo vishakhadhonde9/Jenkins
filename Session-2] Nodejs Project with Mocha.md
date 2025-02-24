@@ -42,3 +42,5 @@
                     module.exports = app;
                      
 
+- npm install
+- 
