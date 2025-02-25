@@ -1,4 +1,4 @@
-# 
+
 ## Deploy Production Server - 
 - Add port 3000 to SG.
 - Install Nodejs and npm.
@@ -49,13 +49,13 @@
 - pm2 start index.js
 
 
-
-# Jenkin Server -
+# 1] Build -
+#3 Jenkin Server -
 - Create directory nodeapp
 - Install and setup Git.
 - Create two files package.json and index.js as above.
 
-# Connect to Jenkins- (8080)
+## Connect to Jenkins- (8080)
 - Create new item.
 - Add Description.
 - Select Source Code Management as git and add git repo link.
@@ -72,6 +72,7 @@
 - Sesrch nodejs plugin and install with same version as deployment server.
 - Restart Jenkin.
 - Connect To jenkin again.
+
 ### Go to your project and configure again-
 - Add env as provide node and npm
 - Add Build Step: execute shell -----> npm install.
@@ -94,30 +95,25 @@
 
                     var request = require('supertest');
                     var app = require('../index.js');
-                     
-                    describe('GET /', function() {
-                      it('respond with 404 page not found', function(done) {
+                    
+                    describe('GET /', function () {
+                      after(function () {
+                        process.exit(0); // Ensure Mocha exits after tests
+                      });
+                    
+                      it('respond with 404 page not found', function (done) {
                         request(app)
                           .get('/nonexistentpage')
-                          .expect(404)
-                          .end(function(err, res) {
-                            if (err) {
-                              // If there's an error, log it and pass it to the done callback
-                              console.error(err);
-                              return done(err);
-                            }
-                            // If everything is fine, invoke the done callback
-                            done();
-                          });
+                          .expect(404, done);
                       });
                     });
-
+                    
 
 
 
 - Add file into workspace.
 
-# Connect To Jenkins(8080)
+## Connect To Jenkins(8080)
 - Add New item.
 - Add Description.
 - Select Source Code Management as git and add git repo link.
@@ -126,3 +122,45 @@
           - Build if first is stable.
 -  Add env as provide node and npm
 - Add Build Step: execute shell -----> npm install.   ./node_modules/mocha/bin/_mocha --exit ./test/test.js
+- Save.
+
+## On server -
+- Push files on github.
+
+# 3] Production Server/Deploy -
+## On Jenkin Server (8080)-
+- Go to Dashboard ----> Manage Jenkins ----> Plugin ----> Available Plugins ----> Search (SSH) ----> Install ----> Restart.
+- Go to Dashboard ----> Manage Jenkins ----> Security ----> Credentials ----> Global ----> Add Credentials ----> Username(ubuntu) and private key(.pem).
+- Go to Dashboard ----> Manage Jenkins ----> System ----> SSH Remote host -----> username, hostIP (ip of deployement server), port(22), key (.pem).
+
+
+- Add New item.
+- Add Description.
+- Select Source Code Management as git and add git repo link.
+- Select trigger as "Build after other Project".
+          - Add watch as "testprojetname.
+          - Build if first is stable.
+-  Add env as provide node and npm
+- Add Build Step: execute shell
+      - cd /home/ubuntu/node1
+      - git pull repolink
+      - npm install
+      - npm run
+      - sudo npm install -g pm2
+      - pm2 start index.js
+- Save.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
