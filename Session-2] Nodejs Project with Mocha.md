@@ -130,7 +130,7 @@
 # 3] Production Server/Deploy -
 ## On Jenkin Server (8080)-
 - Go to Dashboard ----> Manage Jenkins ----> Plugin ----> Available Plugins ----> Search (SSH) ----> Install ----> Restart.
-- Go to Dashboard ----> Manage Jenkins ----> Security ----> Credentials ----> Global ----> Add Credentials ----> SSH Username with Private Key ----> Username(ubuntu) and private key(.pem).
+- Go to Dashboard ----> Manage Jenkins ----> (Security)Credentials ----> Global ----> Add Credentials ----> SSH Username with Private Key ----> Username(ubuntu) and private key(.pem).
 - Go to Dashboard ----> Manage Jenkins ----> System ----> SSH Remote host -----> username, hostIP (ip of deployement server), port(22), key (.pem).
 
 
