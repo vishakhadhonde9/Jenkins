@@ -142,12 +142,16 @@
           - Build if first is stable.
 -  Add env as provide node and npm
 - Add Build Step: execute shell
-      - cd /home/ubuntu/node1
-      - git pull repolink
-      - npm install
-      - npm run
-      - sudo npm install -g pm2
-      - pm2 start index.js
+
+
+       cd /home/ubuntu/node1
+       git pull repolink
+       npm install
+       npm run
+       sudo npm install -g pm2
+       pm2 start index.js
+
+  
 - Save.
 
 
