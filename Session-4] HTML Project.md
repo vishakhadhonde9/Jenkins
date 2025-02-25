@@ -7,6 +7,10 @@
       git commit -m "cm1"
 
 
-  # Jenkin Server -
-  - Create item.
-  - 
+# Jenkin Server -
+- Create new item.
+- Add Description.
+- Select Source Code Management as git and add git repo link.
+- Select trigger as "GitHub hook trigger for GITScm polling"
+- Select 
+- Save.
