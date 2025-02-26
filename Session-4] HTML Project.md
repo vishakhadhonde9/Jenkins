@@ -39,7 +39,7 @@
   
 # On PowerShell -
 
-scp -i path-to-keypar.pem path-to-keypair.pem ubuntu@ip_of_jenkin :/home/ubuntu/htmlproject(dirname)
+            scp -i path-to-keypar.pem path-to-keypair.pem ubuntu@ip_of_jenkin :/home/ubuntu/htmlproject(dirname)
 
 - Check with ls command.
 
