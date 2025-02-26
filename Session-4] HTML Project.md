@@ -1,5 +1,5 @@
 # Jenkin -
-- Create directory: mkdir htmlProject.
+- Create directory: mkdir htmlproject.
 - Initialize and configure git.
 
       git remote add origin
@@ -39,7 +39,7 @@
   
 # On PowerShell -
 
-            scp -i path-to-keypar.pem path-to-keypair.pem ubuntu@ip_of_jenkin :/home/ubuntu/htmlproject(dirname)
+            scp -i path-to-keypar.pem path-to-keypair.pem ubuntu@ip_of_jenkin:/home/ubuntu/htmlproject(dirname)
 
 - Check with ls command.
 
@@ -48,9 +48,9 @@
 - Add execute shell:
 
             
-            chmod 600 git1.pem
-            scp -i git1.pem -o StrictHostKeyChecking=no myfile.zip ubuntu@13.233.133.74:~
-            ssh -i git1.pem -o StrictHostKeyChecking=no ubuntu@13.233.133.74<<EOF
+            chmod 600 keypair.pem
+            scp -i keypair.pem -o StrictHostKeyChecking=no myfile.zip ubuntu@13.233.133.74:~
+            ssh -i keypair.pem -o StrictHostKeyChecking=no ubuntu@13.233.133.74<<EOF
             sudo cp myfile.zip /var/www/html
             cd /var/www/html
             sudo unzip myfile.zip
