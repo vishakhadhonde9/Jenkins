@@ -1,5 +1,6 @@
 # Jenkin -
 - Create directory: mkdir htmlproject.
+- Create file with .html extension.
 - Initialize and configure git.
 
       git remote add origin
