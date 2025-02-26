@@ -50,8 +50,8 @@
 
             
             chmod 600 keypair.pem
-            scp -i keypair.pem -o StrictHostKeyChecking=no myfile.zip ubuntu@13.233.133.74:~
-            ssh -i keypair.pem -o StrictHostKeyChecking=no ubuntu@13.233.133.74<<EOF
+            scp -i keypair.pem -o StrictHostKeyChecking=no myfile.zip ubuntu@ip_of_prodserver:~
+            ssh -i keypair.pem -o StrictHostKeyChecking=no ubuntu@ip_of_prodserver<<EOF
             sudo cp myfile.zip /var/www/html
             cd /var/www/html
             sudo unzip myfile.zip
