@@ -17,6 +17,30 @@
 
 
 
+          pipeline {
+              agent any
+              stages {
+                  stage('Build') {
+                      steps {
+                          echo 'Building the project...'
+                      }
+                  }
+                  stage('Test') {
+                      steps {
+                          echo 'Running tests...'
+                      }
+                  }
+                  stage('Deploy') {
+                      steps {
+                          echo 'Deploying the project...'
+                      }
+                  }
+              }
+          }
+
+
+
+
 ## 2. Scripted Pipeline -
 - Uses the Groovy programming language.
 - More flexible and powerful but harder to understand.
@@ -27,6 +51,17 @@
 
 
 
+        node {
+            stage('Build') {
+                echo 'Building the project...'
+            }
+            stage('Test') {
+                echo 'Running tests...'
+            }
+            stage('Deploy') {
+                echo 'Deploying the project...'
+            }
+        }
 
 
 
