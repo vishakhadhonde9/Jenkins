@@ -291,7 +291,7 @@
 - Do setup for Maven and JDK tool which is installed already while configuring Jenkins 1st time. 
 
 
-- Dashboard --> Manage Jenkins --> Tools --> JDK installations amd  Add JDK --> Enter Name --> install
+- Dashboard --> Manage Jenkins --> Tools --> JDK installations and  Add JDK --> Enter Name --> install automatically.
 - Create new item.
 - Add Description.
 - Select Source Code Management as git and add git repo link.
