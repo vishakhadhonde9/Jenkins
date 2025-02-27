@@ -41,9 +41,8 @@
 |--------------------|--------------------------------|--------------------------------|
 | **Definition**     | Uses a simple, structured format. | Uses Groovy programming for full control. |
 | **Syntax**        | Uses `pipeline {}` block. | Uses `node {}` block. |
-| **Ease of Use**   | Easier to write and understand. | More complex but powerful. |
+| **Ease of Use**   | Easier to write and understand. | More complex. |
 | **Customization** | Limited but enough for most cases. | Full flexibility to customize automation. |
 | **Error Handling**| Built-in error handling. | Requires manual error handling. |
-| **Best For**      | Simple to medium automation tasks. | Advanced automation with custom logic. |
-| **Example**       | Uses predefined stages (Build, Test, Deploy). | Can use loops, conditions, and custom logic. |
+
 
