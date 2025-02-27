@@ -13,7 +13,7 @@
 
 
 # pom.xml -
-- vi src/pom.xml 
+- vi pom.xml 
 
  
 
