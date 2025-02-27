@@ -296,7 +296,7 @@
 - Add Description.
 - Select Source Code Management as git and add git repo link.
 - Select trigger as "GitHub hook trigger for GITScm polling"
-- Select Build Step as "Invoke top-level Maven targets"and goal as "clean package"
+- Select Build Step as "Invoke top-level Maven targets"and version as "your installation name" goal as "clean package"
 - Save.
 
 # On Jenkin -
