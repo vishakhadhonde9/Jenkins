@@ -67,7 +67,27 @@
 - Sesrch nodejs plugin and install with same version as deployment server.
 - Restart Jenkin.
 - Connect To jenkin again.
-- *If already install:  Manage Jenkins ---> Tool ---> NodeJs Installation ---> Name.
+- **If already install:  Manage Jenkins ---> Tool ---> NodeJs Installation ---> Name.**
+
+###  Install SSH Agent Plugin -
+- Go to the Dashboard.
+- Click Manage Jenkins → Manage Plugins.
+- Go to the Available tab.
+- In the search box, type: "SSH Agent Plugin".
+- Select SSH Agent Plugin and click Install without restart.
+
+
+###  Add SSH Credentials in Jenkins -
+- Go to Jenkins Dashboard → Click Manage Jenkins.
+- Click Manage Credentials.
+- Click (global) → Add Credentials.
+- Choose "SSH Username with private key".
+- Enter your SSH username (ubuntu).
+- Add your private key:
+- Select "Enter directly" and paste the private key.
+- Click OK.
+- Note the Credential ID
+
 
 ### Create Project -
 - Create new item.
@@ -78,39 +98,55 @@
 - Under Pipeline ---> Inside sceript add your script.
 
 
-          pipeline {
-              agent any
-               tools{
-                   nodejs 'add your node installation name'
-               }
-               stages {
-                  stage('Git cloning') {
-                      steps {
-                          echo 'github checkout'
-                          checkout scmGit(branches: [[name: '*/master']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/vishakhadhonde9/Pipelines.git']])
-                      }
-                  }
-                  stage('Build') {
-                      steps {
-                          echo 'Building Nodejs-app'
-                          sh "npm install"
-                      }
-                  }
-                  stage('Test') {
-                      steps {
-                          echo 'Testing'
-                          sh "./node_modules/mocha/bin/_mocha --exit ./test/test.js"
-                      }
-                  }
-                  stage('Deploy'){
-                      steps{
-                          echo "Deploying"
-                          }
-                      }
-                  }
-              }
-          }
-          
+                                  pipeline {
+                                      agent any
+                                      tools{
+                                          nodejs 'mynode'
+                                      }
+                              
+                                      stages {
+                                  
+                                          stage('Git cloning') {
+                                          steps {
+                                              echo 'github checkout'
+                                              checkout scmGit(branches: [[name: '*/master']], extensions: [], userRemoteConfigs: [[url: '']])
+                                          }
+                                      }
+                              
+                                          stage('Build') {
+                                              steps {
+                                                  echo 'Building the project...'
+                                                  sh "npm install"
+                                              }
+                                          }
+                                          stage('Test') {
+                                              steps {
+                                                  echo 'Running tests...'
+                                              }
+                                          }
+                                          stage('Deploy') {
+                                              steps {
+                                                  echo 'Deploying the project...'
+                                                  script{
+                                                  sshagent(['9585c453-a445-443e-8a68-7d7bf16d6926']) {  
+                                                   sh '''
+                                                         ssh -o StrictHostKeyChecking=no ubuntu@3.85.32.102<<EOF
+                                                          cd /home/ubuntu/nodeapp/
+                                                          git pull https://github.com/vishakhadhonde9/Pipelines.git
+                                                          npm install
+                                                          sudo npm install -g pm2
+                                                          pm2 restart index.js || pm2 start index.js
+                              		                    exit
+                                                          EOF     
+                                                       '''
+                                                 }
+                                              }
+                                          }
+                                      }
+                                  }
+                              }
+                              
+
   
 - Save.
 
