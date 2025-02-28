@@ -98,54 +98,57 @@
 - Under Pipeline ---> Inside sceript add your script.
 
 
-                                  pipeline {
-                                      agent any
-                                      tools{
-                                          nodejs 'mynode'
-                                      }
-                              
-                                      stages {
-                                  
-                                          stage('Git cloning') {
-                                          steps {
-                                              echo 'github checkout'
-                                              checkout scmGit(branches: [[name: '*/master']], extensions: [], userRemoteConfigs: [[url: '']])
-                                          }
-                                      }
-                              
-                                          stage('Build') {
-                                              steps {
-                                                  echo 'Building the project...'
-                                                  sh "npm install"
-                                              }
-                                          }
-                                          stage('Test') {
-                                              steps {
-                                                  echo 'Running tests...'
-                                              }
-                                          }
-                                          stage('Deploy') {
-                                              steps {
-                                                  echo 'Deploying the project...'
-                                                  script{
-                                                  sshagent(['9585c453-a445-443e-8a68-7d7bf16d6926']) {  
-                                                   sh '''
-                                                         ssh -o StrictHostKeyChecking=no ubuntu@3.85.32.102<<EOF
-                                                          cd /home/ubuntu/nodeapp/
-                                                          git pull https://github.com/vishakhadhonde9/Pipelines.git
-                                                          npm install
-                                                          sudo npm install -g pm2
-                                                          pm2 restart index.js || pm2 start index.js
-                              		                    exit
-                                                          EOF     
-                                                       '''
-                                                 }
-                                              }
-                                          }
-                                      }
-                                  }
-                              }
-                              
+                     pipeline {
+                            agent any
+                            tools{
+                                nodejs 'mynode'
+                            }
+                    
+                            stages {
+                        
+                                stage('Git cloning') {
+                                steps {
+                                    echo 'github checkout'
+                                    checkout scmGit(branches: [[name: '*/master']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/vishakhadhonde9/Pipelines.git']])
+                                }
+                            }
+                    
+                                stage('Build') {
+                                    steps {
+                                        echo 'Building the project...'
+                                        sh "npm install"
+                                    }
+                                }
+                                stage('Test') {
+                                    steps {
+                                        echo 'Running tests...'
+                                         sh './node_modules/mocha/bin/_mocha --exit ./test/test.js'
+                    
+                                    }
+                                }
+                                stage('Deploy') {
+                                    steps {
+                                        echo 'Deploying the project...'
+                                        script{
+                                        sshagent(['9585c453-a445-443e-8a68-7d7bf16d6926']) {  
+                                         sh '''
+                                               ssh -o StrictHostKeyChecking=no ubuntu@3.85.32.102<<EOF
+                                                cd /home/ubuntu/nodeapp/
+                                                git pull https://github.com/vishakhadhonde9/Pipelines.git
+                                                npm install
+                                                sudo npm install -g pm2
+                                                pm2 restart index.js || pm2 start index.js
+                    		                    exit
+                                                EOF     
+                                             '''
+                                       }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                    
+                    
 
   
 - Save.
