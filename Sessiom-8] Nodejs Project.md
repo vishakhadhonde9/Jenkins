@@ -132,9 +132,9 @@
                                         script{
                                         sshagent(['9585c453-a445-443e-8a68-7d7bf16d6926']) {  
                                          sh '''
-                                               ssh -o StrictHostKeyChecking=no ubuntu@3.85.32.102<<EOF
+                                               ssh -o StrictHostKeyChecking=no ubuntu@ip_of_deploymentserver<<EOF
                                                 cd /home/ubuntu/nodeapp/
-                                                git pull https://github.com/vishakhadhonde9/Pipelines.git
+                                                git pull https://github.com/vishakhadhonde9/Pipelines.gi
                                                 npm install
                                                 sudo npm install -g pm2
                                                 pm2 restart index.js || pm2 start index.js
