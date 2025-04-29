@@ -67,5 +67,44 @@
 - CI/CD stands for:
   - CI → Continuous Integration
   - CD → Continuous Delivery / Continuous Deployment
+- It is a modern software development practice that helps teams deliver code changes more frequently, reliably, and automatically.
 
-It's a DevOps practice used to automate the software development lifecycle, from code changes to production deployment.
+## 1. Continuous Integration (CI) -
+- Developers frequently (e.g., daily or several times per day) push their code to a shared version control system like Git.
+- Each commit triggers an automated build and test process.
+
+#### Steps -
+- Commit Code to GitHub
+  - Developer pushes code to a shared GitHub repository.
+
+- CI Tool Detects Push
+  - Jenkins/GitLab CI is triggered automatically via webhook.
+
+- Pull Latest Code
+  - CI tool clones or updates the code from the repository.
+
+- Run Build
+  - Installs dependencies and compiles or packages the code.
+
+- Run Automated Tests
+  - Executes unit tests, integration tests, and linters.
+
+- Report Results
+  - Sends success/failure notifications to developers.
+ 
+## 2. Continuous Delivery/Deployment -
+- CI Passes – Code is built and tested.
+- Package Code – Create artifact (e.g., Docker image, .jar).
+- Deploy to Staging – Automatically deploy to pre-production.
+- Test in Staging – Run integration/E2E tests.
+- Manual Approval – Team reviews and approves.
+- Deploy to Production – Manually trigger final release.
+
+![image](https://github.com/user-attachments/assets/e0f26630-fc25-41a0-b71b-8b529bf5be24)
+
+
+
+
+
+
+
