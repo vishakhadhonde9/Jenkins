@@ -121,7 +121,11 @@
           - Add watch as "buildprojetname.
           - Build if first is stable.
 -  Add env as provide node and npm
-- Add Build Step: execute shell -----> npm install.   ./node_modules/mocha/bin/_mocha --exit ./test/test.js
+- Add Build Step: execute shell ----->
+
+            npm install
+           ./node_modules/mocha/bin/_mocha --exit ./test/test.js
+
 - Save.
 
 ## On server -
